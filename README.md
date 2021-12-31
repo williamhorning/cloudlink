@@ -6,18 +6,18 @@ A Javascript client for Cloudlink servers
 
 ### Node.js
 
-Install the [`cloudlink`](https://www.npmjs.com/package/cloudlink) package and use the following code to import the ESM version of Cloudlink:
+Install the [`@wgyt/cloudlink`](https://www.npmjs.com/package/@wgyt/cloudlink) package and use the following code to import the ESM version of Cloudlink:
 
 ```js
-import { Cloudlink } from 'cloudlink';
+import { Cloudlink } from '@wgyt/cloudlink';
 ```
 
 ### Typescript
 
-Install the [`cloudlink`](https://www.npmjs.com/package/cloudlink) package and use the following code to import the Typescript version of Cloudlink:
+Install the [`@wgyt/cloudlink`](https://www.npmjs.com/package/@wgyt/cloudlink) package and use the following code to import the Typescript version of Cloudlink:
 
 ```ts
-import { Cloudlink } from 'cloudlink/typescript/cloudlink';
+import { Cloudlink } from '@wgyt/cloudlink/typescript/cloudlink';
 ```
 
 ### Browser
