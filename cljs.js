@@ -92,7 +92,7 @@ class CloudlinkJS {
     };
 
     this.ws.onerror = function (e) {
-      this.vents.emit('wserror', e);
+      this.events.emit('wserror', e);
     };
   }
   send(data) {
