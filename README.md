@@ -2,88 +2,100 @@
 
 A Javascript client for Cloudlink servers
 
-## How to install
-
-Download `cljs.js` and import it into your project.
-
-### Browser Environments
-
-To use Cloudlink JS in a browser, add the attrribute `type="module"` to the script tag and use the following to import it
-
-```js
-import CloudlinkJS from './cljs.js';
-```
+## Installing
 
 ### Node.js
 
-To use Cloudlink JS in Node.js, add `"type": "module"` to `package.json` and use the following to import it
+Install the [`cloudlink`](https://www.npmjs.com/package/cloudlink) package and use the following code to import the ESM version of Cloudlink:
 
 ```js
-import CloudlinkJS from './cljs.js';
+import { Cloudlink } from 'cloudlink';
 ```
 
-## Code Snippets
+### Typescript
 
-### Initialize
+Install the [`cloudlink`](https://www.npmjs.com/package/cloudlink) package and use the following code to import the Typescript version of Cloudlink:
 
-```js
-import CloudlinkJS from './cljs.js';
-var cljs = new CloudlinkJS('wss://server.meower.org');
+```ts
+import { Cloudlink } from 'cloudlink/typescript/cloudlink';
 ```
 
-### Listen for events
+### Browser
 
-```js
-cljs.on('gmsg', (message) => {
-  console.log(message);
+Use the following code to use Cloudlink in the browser:
+
+```html
+<script type="module">
+  import { Cloudlink } from './path/to/cloudlink.js';
+</script>
+```
+
+## Usage
+
+### Creating a new Cloudlink instance
+
+```ts
+import { Cloudlink } from './path/to/cloudlink.js';
+var client = new Cloudlink('ws://localhost:8080');
+```
+
+### Listening for events
+
+```ts
+client.on('gmsg', (data) => {
+  console.log(`Data is: ${JSON.stringify(data)}`);
 });
 ```
 
-#### Event types
+### Events
 
-| **Name** | **Description**    |
-| -------- | ------------------ |
-| gmsg     | Global Message     |
-| pmsg     | Private Message    |
-| gvar     | Global Variable    |
-| pvar     | Private Variable   |
-| ulist    | User List          |
-| vers     | Version            |
-| motd     | Message of the Day |
-| direct   | Direct Command     |
-| status   | Status Code        |
-| wsopened | WebSocket Opened   |
-| wsclosed | WebSocket Closed   |
-| wserror  | WebSocket Error    |
+| **Name**     | **Description**          |
+| ------------ | ------------------------ |
+| gmsg         | Global Message           |
+| pmsg         | Private Message          |
+| gvar         | Global Variable          |
+| pvar         | Private Variable         |
+| ulist        | User List                |
+| vers         | Server Version           |
+| motd         | Message of the Day       |
+| direct       | Direct Command           |
+| status       | Status Code              |
+| connected    | Connected to server      |
+| disconnected | Disconnected from server |
+| error        | Internal error           |
 
 ### Send a command
 
-```js
-cljs.send({ cmd: 'gmsg', msg: 'Hello World!' });
+```ts
+client.send({ cmd: 'gmsg', msg: 'Hello World!' });
 ```
 
 ### Disconnect
 
-```js
-cljs.disconnect();
+```ts
+client.disconnect();
+```
+
+### Accessing a variable
+
+```ts
+console.log(client.data.gvar);
 ```
 
 ### Variables
 
-```js
-// gvar
-console.log(cljs.gvar); // {name:'this is the name variable'}
-// pvar
-console.log(cljs.pvar); // {name:'this is the name variable'}
-// ulist
-console.log(cljs.ulist); // ['person1']
-// version
-console.log(cljs.version); // '1.0.0'
-// motd
-console.log(cljs.motd); // 'This is the MOTD'
-// status
-console.log(cljs.status); // 'I:100:OK:The server handed the request correctly.'
-```
+| **Name**    | **Description**    |
+| ----------- | ------------------ |
+| gvar        | Global Variable    |
+| pvar        | Private Variable   |
+| ulist       | User List          |
+| version     | Server Version     |
+| motd        | Message of the Day |
+| status      | Status Codes       |
+| status.info | Status type        |
+| status.code | Status code        |
+| status.msg  | Status message     |
 
 ## License
+
 See the `LICENSE` file.
