@@ -27,42 +27,14 @@ interface looseObj {
   [key: string]: any;
 }
 
-type cloudlinkData = {
-  gvar: looseObj;
-  pvar: looseObj;
-  ulist: Array<string>;
-  version: string;
-  motd: string;
-  status: {
-    info: boolean;
-    code: number;
-    msg: string;
-  };
-};
-
-declare class EventEmitter {
-  events: eventsObj;
-  constructor();
-  on(event: string, cb: callback): void;
-  emit(event: string, data?: any): void;
-}
-
 declare class Cloudlink {
-  events: EventEmitter;
+  events: eventsObj;
   ws: WebSocket;
-  data: cloudlinkData;
   constructor(server: string);
   send(data: outgoingPacket): void;
   on(event: string, cb: callback): void;
+  emit(event: string, data?: any): void;
   disconnect(): void;
 }
 
-export {
-    callback,
-    eventsObj,
-    outgoingPacket,
-    looseObj,
-    cloudlinkData,
-    EventEmitter,
-    Cloudlink
-}
+export { callback, eventsObj, outgoingPacket, looseObj, Cloudlink };

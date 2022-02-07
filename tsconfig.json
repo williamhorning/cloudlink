@@ -7,10 +7,10 @@
     "strict": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "outDir": "javascript",
-    "rootDir": "typescript",
+    "outDir": "src",
+    "rootDir": "src",
   },
   "files": [
-    "typescript/cloudlink.ts"
+    "src/cloudlink.ts"
   ]
 }
