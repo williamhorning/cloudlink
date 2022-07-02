@@ -1,6 +1,7 @@
 class Cloudlink {
     constructor(server) {
         this.events = {};
+        console.warn('Cloudlink.js is deprecated. Please use another library. See https://github.com/wgyt/cloudlink#Deprecation');
         this.ws = new WebSocket(server);
         this.ws.onopen = async () => {
             this.send({
